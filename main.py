@@ -12,6 +12,8 @@ dotenv.load_dotenv()
 
 
 password = os.getenv('PASSWORD')
+email = os.getenv('EMAIL')
+receiver = os.getenv('RECEIVEREMAIL')
 
 def check_price():
 # Connect to Website and pull in data
@@ -55,7 +57,7 @@ def send_mail():
     server.ehlo()
     #server.starttls()
     server.ehlo()
-    server.login('akay41024@gmail.com',f'{password}')
+    server.login(f'{email}',f'{password}')
     
     subject = "The Shirt you want is below $14! Now is your chance to buy!"
     body = "Alex, This is the moment we have been waiting for. Now is your chance to pick up the shirt of your dreams. Don't mess it up! Link here: https://www.amazon.com/Data-Science-Programming-Programmer-T-Shirt/dp/B0C1TGFN8M/ref=sr_1_7?crid=2QDSC0MU1AFTY&dib=eyJ2IjoiMSJ9.8S8PRbJgIywHwKobIPqKaIAaiMGQQMpyI5OaQ8p_51uSrreRLr-mIf6Zj04R12ZB3a6PTzXNlNz41aQEirjbEcyvkQ3NiKjiYl8cFrHUF144VOSS7iaANP_zVjTHDZbOqV5k1ZI-OLTgfBwBUSZXv8ULObcfXnKLqWoWTtxHBgqIm85WMZ-0QD6sI2jUDmImRQTob8A274xiFsS7e_diUfcFyC8gAHhR3iBzYmFZPet6Z7x_L9JQenO2Z7iS-pp-pYN736zfgqP4PWH9u8VnXGY7gXXfl7SAfahjHRCmbio.4PXusQvBYMx8Sqd7siRGcU5__izjbFTFTAXjQpz4Wao&dib_tag=se&keywords=data+nerd+tshirt&qid=1720464589&sr=8-7"
@@ -63,7 +65,7 @@ def send_mail():
     msg = f"Subject: {subject}\n\n{body}"
     
     server.sendmail(
-        'asifkhan41024@gmail.com',
+        f'{receiver}',
         msg
      
     )
